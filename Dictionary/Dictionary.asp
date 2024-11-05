@@ -6,6 +6,8 @@ Dim fixed_array(1)
 fixed_array(0) = Null
 fixed_array(1) = Null
 
+Dim last_index_searched
+
 '------- Public functions --------'
 
 'Function to initialize the Dictionary'
@@ -45,17 +47,21 @@ End Function
 'Funtion to check if a key has been used'
 Function check_if_key_has_been_used(dictionary,key)
 Dim temp
+Dim temp_index
+temp_index = 0
 For Each temp In dictionary
 If temp(0) = key Then 
 check_if_key_has_been_used = true
+last_index_searched = temp_index
 Exit Function
 End If
+temp_index = temp_index + 1
 Next
 check_if_key_has_been_used = false
 End Function
 
 'Function to add an element'
-Function add_element_to_dynamic_array(dictionary,key,value)
+Function add_element_to_dictionary_array(dictionary,key,value)
 Dim temp
 temp = UBound(dictionary)
 If temp = 0 and IsNull(dictionary(0)(0)) and IsNull(dictionary(0)(1)) Then 'If the dictionary has been just initializated'
@@ -69,7 +75,7 @@ dictionary(temp) = fixed_array
 dictionary(temp)(0) = key
 dictionary(temp)(1) = value
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - add_element_to_dynamic_array", "Duplicated key")
+Call Err.Raise(vbObjectError + 10, "Dictionary - add_element_to_dictionary_array", "Duplicated key")
 End If 
 End If
 End Function
@@ -77,13 +83,7 @@ End Function
 'Function to get value from key'
 Function get_dictionary_value_from_key(dictionary,key)
 If check_if_key_has_been_used(dictionary,key) Then
-Dim temp
-For Each temp In dictionary
-If temp(0) = key Then
-get_dictionary_value_from_key = temp(1)
-Exit Function 
-End If
-Next
+get_dictionary_value_from_key = dictionary(last_index_searched)(1)
 Else
 Call Err.Raise(vbObjectError + 10, "Dictionary - get_dictionary_value_from_key", "The key is not present")
 End If
@@ -92,16 +92,7 @@ End Function
 'Function to set value from key'
 Function set_dictionary_value_from_key(dictionary,key,value)
 If check_if_key_has_been_used(dictionary,key) Then
-Dim temp
-Dim temp_index
-temp_index = 0
-For Each temp In dictionary
-If temp(0) = key Then
-dictionary(temp_index)(1) = value
-Exit Function 
-End If
-inedx_temp = temp_index + 1
-Next
+dictionary(last_index_searched)(1) = value
 Else
 Call Err.Raise(vbObjectError + 10, "Dictionary - set_dictionary_value_from_key", "The key is not present")
 End If
@@ -110,16 +101,10 @@ End Function
 'Function to change dictionary key'
 Function change_dictionary_key(dictionary,old_key,new_key)
 If check_if_key_has_been_used(dictionary,old_key) Then
+Dim temp
+temp = last_index_searched
 If Not check_if_key_has_been_used(dictionary,new_key) Then 
-Dim temp 
-Dim temp_index
-temp_index = 0
-For Each temp In dictionary
-If temp(0) = old_key Then 
-dictionary(temp_index)(0) = new_key
-End If
-temp_index = temp_index + 1
-Next
+dictionary(temp)(0) = new_key
 Else
 Call Err.Raise(vbObjectError + 10, "Dictionary - change_dictionary_key", "The new key is used")
 End If
@@ -160,7 +145,7 @@ Dim temp_array
 temp_array = Array()
 Dim temp_item
 For Each temp_item In dictionary
-If Not temp_inedx = idx Then 
+If Not temp_index = idx Then 
 Redim Preserve temp_array(temp_index)
 temp_array(temp_index) = temp_item
 End If
@@ -170,6 +155,27 @@ Else
 Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_element_from_index", "Index error")
 End If
 dictionary = temp_array
+End Function
+
+'Funtion to remove last element from the dictionary'
+Function remove_last_element_from_dictionary(dictionary)
+Dim temp 
+temp = UBound(dictionary)
+If temp > 0 Then
+temp = temp - 1
+Redim Preserve dictionary(temp)
+Else
+Call Err.Raise(vbObjectError + 10, "Dictionary - remove_last_element_from_dictionary", "No element to remove")
+End If
+End Function
+
+'Function to get key index from dictionary'
+Function get_key_index_from_dictionary(dictionary,key)
+If check_if_key_has_been_used(dictionary,key) Then
+get_key_index_from_dictionary = last_index_searched
+Else
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_key_index_from_dictionary", "The key is not present")
+End If 
 End Function
 
 '------Last Functions------'
