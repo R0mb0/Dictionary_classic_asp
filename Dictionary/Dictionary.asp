@@ -181,7 +181,7 @@ Call Err.Raise(vbObjectError + 10, "Dictionary - get_key_index_from_dictionary",
 End If 
 End Function
 
-'Function to check if a value is in the dictionary' ----------------------------------------------------------------------------------
+'Function to check if a value is in the dictionary'
 Function check_if_value_is_present(dictionary,value)
 Dim temp
 temp_index = 0
@@ -273,6 +273,23 @@ temp_index = temp_index + 1
 End If
 Next
 dictionary = temp_array
+End Function
+
+'Function to replace all value occurrences with new value'
+Function replace_all_value_occurrences(dictionary,old_value,new_value)
+If check_if_value_is_present(dictionary,old_value) Then 
+Dim temp 
+Dim temp_index
+temp_index = 0
+For Each temp In dictionary
+If temp(1) = old_value Then 
+dictionary(temp_index)(1) = new_value
+End If
+temp_index = temp_index + 1
+Next
+Else
+Call Err.Raise(vbObjectError + 10, "Dictionary - replace_all_value_occurrences", "The value is not present")
+End If
 End Function
 
 'Funtion to write the entire dictionary'

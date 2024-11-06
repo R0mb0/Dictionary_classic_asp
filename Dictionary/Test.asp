@@ -100,8 +100,12 @@ Response.Write(" "&temp&" ")
 Next
 Response.Write("<br>")
 
-Response.Write("--- Remove all -Hot shot- occurrences from dictionary--- <br>")
-remove_dictionary_elements_from_value dictionary,"Hot shot"
+Response.Write("--- Replace all -Hot shot- occurrences with -Hot kiss- in dictionary--- <br>")
+replace_all_value_occurrences dictionary,"Hot shot","Hot kiss"
+write_dictionary dictionary
+
+Response.Write("--- Remove all -Hot kiss- occurrences from dictionary--- <br>")
+remove_dictionary_elements_from_value dictionary,"Hot kiss"
 write_dictionary dictionary
 
 Response.Write("--- Remove 10 15 5 element from dictionary--- <br>")
