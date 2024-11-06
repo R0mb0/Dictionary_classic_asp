@@ -18,10 +18,16 @@
 - **Remove dictionary element from key** -> `remove_dictionary_element_from_index(dictionary,idx)`
 - **Remove dictionary element from index** -> `remove_dictionary_element_from_index(dictionary,idx)`
 - **Remove last element from dictionary** -> `remove_last_element_from_dictionary(dictionary)`
+- **Remove elements from dictionary using indices (pass to function an array with the indices)** -> `remove_dictionary_elements_from_indices(dictionary,indices)`
+- **Remove all elements with the same value from dictionary** -> `remove_dictionary_elements_from_value(dictionary,value)`
+- **Replace all value occurrences with a new value in dictionary** -> `replace_all_value_occurrences(dictionary,old_value,new_value)`
 - **Get key index from dictionary** -> `get_key_index_from_dictionary(dictionary,key)`
 - **Reset a dictionary** -> `get_initialized_dictionary()`
 - **Get dictionary key from index** -> `get_dictionary_key_from_index(dictionary,idx)`
+- **Get first value index occurrence** -> `get_first_value_index_occurrence(dictionary,value)`
+- **Get all indices of a value** -> `get_all_value_indices(dictionary,value)`
 - **Check if a key has been used into dictionary** -> `check_if_key_has_been_used(dictionary,key)`
+- **Check if a value is present in the dictionary** -> `check_if_value_is_present(dictionary,value)`
 - **Get dictionary value from index** -> `get_dictionary_value_from_index(dictionary,idx)`
 - **Get dictionary dimension** -> `get_dictionary_dimension(dictionary)`
 - **Write a dictionary** -> `write_dictionary(dictionary)`
