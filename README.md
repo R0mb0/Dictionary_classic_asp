@@ -17,7 +17,7 @@
 - **Change a key into dictionary** -> `change_dictionary_key(dictionary,old_key,new_key)`
 - **Remove dictionary element from key** -> `remove_dictionary_element_from_index(dictionary,idx)`
 - **Remove dictionary element from index** -> `remove_dictionary_element_from_index(dictionary,idx)`
-- **Remove last element from Dictionary** -> `remove_last_element_from_dictionary(dictionary)`
+- **Remove last element from dictionary** -> `remove_last_element_from_dictionary(dictionary)`
 - **Get key index from dictionary** -> `get_key_index_from_dictionary(dictionary,key)`
 - **Reset a dictionary** -> `get_initialized_dictionary()`
 - **Get dictionary key from index** -> `get_dictionary_key_from_index(dictionary,idx)`
