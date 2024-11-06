@@ -64,15 +64,51 @@ Response.Write("--- Remove dictionary 0034 element --- <br>")
 remove_dictionary_element_from_key dictionary,"0034"
 write_dictionary dictionary
 
-Response.Write("--- Remove dictionary 22 element--- <br>")
+Response.Write("--- Remove dictionary 22 element --- <br>")
 remove_dictionary_element_from_index dictionary,22
 write_dictionary dictionary
 
-Response.Write("--- Remove last element from dictionary--- <br>")
+Response.Write("--- Remove dictionary 13 element --- <br>")
+remove_dictionary_element_from_index dictionary,13
+write_dictionary dictionary
+
+Response.Write("--- Remove last element from dictionary --- <br>")
 remove_last_element_from_dictionary dictionary
 write_dictionary dictionary
 
-Response.Write("--- Get 0014 index from dictionary--- <br>")
-get_key_index_from_dictionary dictionary,"0014"
-Response.Write("Index: " & get_key_index_from_dictionary (dictionary,"0014") & "<br>")
+Response.Write("--- Get 0014 index from dictionary --- <br>")
+get_key_index_from_dictionary dictionary,"0015"
+Response.Write("Index: " & get_key_index_from_dictionary (dictionary,"0015") & "<br>")
+
+Response.Write("--- Check if -Hot shot- value in the dictionary --- <br>")
+Response.Write("Is present? " & check_if_value_is_present (dictionary,"Hot shot") & "<br>")
+
+Response.Write("--- Check if -Hot shot- index the dictionary --- <br>")
+Response.Write("Index: " & get_first_value_index_occurrence (dictionary,"Hot shot") & "<br>")
+
+Response.Write("--- Manage dictionary for next text --- <br>")
+Response.Write("- Change 0011 in -Hot shot- <br>")
+set_dictionary_value_from_key dictionary,"0011","Hot shot"
+Response.Write("- Add 0022 with -Hot shot- <br>")
+add_element_to_dictionary_array dictionary,"0022","Hot shot"
+write_dictionary dictionary
+Response.Write("- Retrieve all indices -Hot shot- <br>")
+Response.Write("Indices: ")
+Dim temp 
+For Each temp in get_all_value_indices(dictionary,"Hot shot")
+Response.Write(" "&temp&" ")
+Next
+Response.Write("<br>")
+
+Response.Write("--- Remove all -Hot shot- occurrences from dictionary--- <br>")
+remove_dictionary_elements_from_value dictionary,"Hot shot"
+write_dictionary dictionary
+
+Response.Write("--- Remove 10 15 5 element from dictionary--- <br>")
+Dim temp_array(2)
+temp_array(0) = 10
+temp_array(1) = 15
+temp_array(2) = 5
+remove_dictionary_elements_from_indices dictionary,temp_array
+write_dictionary dictionary
 %>

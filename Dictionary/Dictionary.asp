@@ -134,20 +134,23 @@ End If
 dictionary = temp_array
 End Function
 
-'Function to remove a dictionary item from key'
+'Function to remove a dictionary item from index'
 Function remove_dictionary_element_from_index(dictionary,idx)
 Dim temp 
 temp = UBound(dictionary)
 If idx >=0 and idx <= temp Then 
 Dim temp_index
 temp_index = 0
+Dim temp_array_index
+temp_array_index = 0
 Dim temp_array
 temp_array = Array()
 Dim temp_item
 For Each temp_item In dictionary
 If Not temp_index = idx Then 
-Redim Preserve temp_array(temp_index)
-temp_array(temp_index) = temp_item
+Redim Preserve temp_array(temp_array_index)
+temp_array(temp_array_index) = temp_item
+temp_array_index = temp_array_index + 1
 End If
 temp_index = temp_index + 1 
 Next
@@ -178,7 +181,99 @@ Call Err.Raise(vbObjectError + 10, "Dictionary - get_key_index_from_dictionary",
 End If 
 End Function
 
-'------Last Functions------'
+'Function to check if a value is in the dictionary' ----------------------------------------------------------------------------------
+Function check_if_value_is_present(dictionary,value)
+Dim temp
+temp_index = 0
+For Each temp In dictionary
+If temp(1) = value Then 
+check_if_value_is_present = true
+last_index_searched = temp_index
+Exit Function
+End If
+temp_index = temp_index + 1
+Next
+check_if_value_is_present = false
+End Function
+
+'Function to get first index value'
+Function get_first_value_index_occurrence(dictionary,value)
+If check_if_value_is_present(dictionary,value) Then
+get_first_value_index_occurrence = last_index_searched
+Else
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_first_value_index_occurrence", "The value is not present")
+End If
+End Function
+
+'Function to retrieve all value indices'
+Function get_all_value_indices(dictionary,value)
+If check_if_value_is_present(dictionary,value) then
+Dim temp_array()
+Dim temp 
+Dim temp_index
+temp_index = 0
+Dim temp_array_index
+temp_array_index = 0
+For Each temp In dictionary
+If temp(1) = value Then 
+Redim Preserve temp_array(temp_array_index)
+temp_array(temp_array_index) = temp_index
+temp_array_index = temp_array_index + 1
+End If
+temp_index = temp_index + 1
+Next
+Else
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_first_value_index_occurrence", "The value is not present")
+End If
+get_all_value_indices = temp_array
+End Function
+
+'Function to remove elements from an array of indices (pass an array with indices)'
+Function remove_dictionary_elements_from_indices(dictionary,indices)
+Dim dimension
+dimension = UBound(dictionary)
+Dim temp_array
+temp_array = Array()
+Dim temp 
+For Each temp In indices
+If temp >= 0 and temp <= dimension Then 
+dictionary(temp) = Null
+Else 
+Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_elements_from_indices", "Index Error")
+End If
+Next
+Dim temp_index
+temp_index = 0
+For Each temp In dictionary
+If Not IsNull(temp) Then 
+Redim Preserve temp_array(temp_index)
+temp_array(temp_index) = temp
+temp_index = temp_index + 1
+End If
+Next
+dictionary = temp_array
+End Function
+
+'Function to remove all elements with that value (remove also one element if the value is unique)'
+Function remove_dictionary_elements_from_value(dictionary,value)
+Dim temp_array
+temp_array = Array()
+temp_array = get_all_value_indices(dictionary,value)
+Dim temp 
+For Each temp In temp_array
+dictionary(temp) = Null
+Next
+Dim temp_index
+temp_index = 0
+For Each temp In dictionary
+If Not IsNull(temp) Then 
+Redim Preserve temp_array(temp_index)
+temp_array(temp_index) = temp
+temp_index = temp_index + 1
+End If
+Next
+dictionary = temp_array
+End Function
 
 'Funtion to write the entire dictionary'
 Function write_dictionary(dictionary)
