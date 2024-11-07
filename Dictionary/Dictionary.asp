@@ -24,7 +24,7 @@ temp = UBound(dictionary)
 If idx >=0 and idx <= temp Then
 get_dictionary_key_from_index = dictionary(idx)(0)
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - get_dictionary_key_from_index", "Index error")
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_dictionary_key_from_index", "Index error: "&idx&"")
 End If
 End Function
 
@@ -35,7 +35,7 @@ temp = UBound(dictionary)
 If idx >=0 and idx <= temp Then
 get_dictionary_value_from_index = dictionary(idx)(1)
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - get_dictionary_value_from_index", "Index error")
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_dictionary_value_from_index", "Index error: "&idx&"")
 End If
 End Function
 
@@ -75,7 +75,7 @@ dictionary(temp) = fixed_array
 dictionary(temp)(0) = key
 dictionary(temp)(1) = value
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - add_element_to_dictionary_array", "Duplicated key")
+Call Err.Raise(vbObjectError + 10, "Dictionary - add_element_to_dictionary_array", "Duplicated key: "&key&"")
 End If 
 End If
 End Function
@@ -85,7 +85,7 @@ Function get_dictionary_value_from_key(dictionary,key)
 If check_if_key_has_been_used(dictionary,key) Then
 get_dictionary_value_from_key = dictionary(last_index_searched)(1)
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - get_dictionary_value_from_key", "The key is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_dictionary_value_from_key", "The key "&key&" is not present")
 End If
 End Function
 
@@ -94,7 +94,7 @@ Function set_dictionary_value_from_key(dictionary,key,value)
 If check_if_key_has_been_used(dictionary,key) Then
 dictionary(last_index_searched)(1) = value
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - set_dictionary_value_from_key", "The key is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - set_dictionary_value_from_key", "The key "&key&" is not present")
 End If
 End Function
 
@@ -106,10 +106,10 @@ temp = last_index_searched
 If Not check_if_key_has_been_used(dictionary,new_key) Then 
 dictionary(temp)(0) = new_key
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - change_dictionary_key", "The new key is used")
+Call Err.Raise(vbObjectError + 10, "Dictionary - change_dictionary_key", "The new key "&new_key&" is used")
 End If
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - change_dictionary_key", "The old key is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - change_dictionary_key", "The old key "&old_key&" is not present")
 End If
 End Function
 
@@ -129,7 +129,7 @@ End If
 temp_index = temp_index + 1
 Next
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_element_from_key", "The key is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_element_from_key", "The key "&key&" is not present")
 End If 
 dictionary = temp_array
 End Function
@@ -155,7 +155,7 @@ End If
 temp_index = temp_index + 1 
 Next
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_element_from_index", "Index error")
+Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_element_from_index", "Index error: "&idx&"")
 End If
 dictionary = temp_array
 End Function
@@ -177,7 +177,7 @@ Function get_key_index_from_dictionary(dictionary,key)
 If check_if_key_has_been_used(dictionary,key) Then
 get_key_index_from_dictionary = last_index_searched
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - get_key_index_from_dictionary", "The key is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_key_index_from_dictionary", "The key "&key&" is not present")
 End If 
 End Function
 
@@ -201,7 +201,7 @@ Function get_first_value_index_occurrence(dictionary,value)
 If check_if_value_is_present(dictionary,value) Then
 get_first_value_index_occurrence = last_index_searched
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - get_first_value_index_occurrence", "The value is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_first_value_index_occurrence", "The value "&value&" is not present")
 End If
 End Function
 
@@ -223,7 +223,7 @@ End If
 temp_index = temp_index + 1
 Next
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - get_first_value_index_occurrence", "The value is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - get_first_value_index_occurrence", "The value "&value&" is not present")
 End If
 get_all_value_indices = temp_array
 End Function
@@ -239,7 +239,7 @@ For Each temp In indices
 If temp >= 0 and temp <= dimension Then 
 dictionary(temp) = Null
 Else 
-Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_elements_from_indices", "Index Error")
+Call Err.Raise(vbObjectError + 10, "Dictionary - remove_dictionary_elements_from_indices", "Index error: "&temp&"")
 End If
 Next
 Dim temp_index
@@ -288,7 +288,7 @@ End If
 temp_index = temp_index + 1
 Next
 Else
-Call Err.Raise(vbObjectError + 10, "Dictionary - replace_all_value_occurrences", "The value is not present")
+Call Err.Raise(vbObjectError + 10, "Dictionary - replace_all_value_occurrences", "The old value "&old_value&" is not present")
 End If
 End Function
 
