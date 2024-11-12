@@ -18,7 +18,7 @@ get_initialized_dictionary = temp_array
 End Function
 
 'Function to get the requested key value from dictionary using the index'
-Function get_dictionary_key_from_index(dictionary,idx)
+Function get_dictionary_key_from_index(ByRef dictionary,ByVal idx)
 Dim temp
 temp = UBound(dictionary)
 If idx >=0 and idx <= temp Then
@@ -29,7 +29,7 @@ End If
 End Function
 
 'Function to get the requested value from dictionary using the index'
-Function get_dictionary_value_from_index(dictionary,idx)
+Function get_dictionary_value_from_index(ByRef dictionary,ByVal idx)
 Dim temp
 temp = UBound(dictionary)
 If idx >=0 and idx <= temp Then
@@ -40,12 +40,12 @@ End If
 End Function
 
 'Function to get dictionary dimension'
-Function get_dictionary_dimension(dictionary)
+Function get_dictionary_dimension(ByRef dictionary)
 get_dictionary_dimension = UBound(dictionary)
 End Function
 
 'Funtion to check if a key has been used'
-Function check_if_key_has_been_used(dictionary,key)
+Function check_if_key_has_been_used(ByRef dictionary,ByVal key)
 Dim temp
 Dim temp_index
 temp_index = 0
@@ -61,7 +61,7 @@ check_if_key_has_been_used = false
 End Function
 
 'Function to add an element'
-Function add_element_to_dictionary_array(dictionary,key,value)
+Function add_element_to_dictionary_array(ByRef dictionary,ByVal key,ByVal value)
 Dim temp
 temp = UBound(dictionary)
 If temp = 0 and IsNull(dictionary(0)(0)) and IsNull(dictionary(0)(1)) Then 'If the dictionary has been just initializated'
@@ -81,7 +81,7 @@ End If
 End Function
 
 'Function to get value from key'
-Function get_dictionary_value_from_key(dictionary,key)
+Function get_dictionary_value_from_key(ByRef dictionary,ByVal key)
 If check_if_key_has_been_used(dictionary,key) Then
 get_dictionary_value_from_key = dictionary(last_index_searched)(1)
 Else
@@ -90,7 +90,7 @@ End If
 End Function
 
 'Function to set value from key'
-Function set_dictionary_value_from_key(dictionary,key,value)
+Function set_dictionary_value_from_key(ByRef dictionary,ByVal key,ByVal value)
 If check_if_key_has_been_used(dictionary,key) Then
 dictionary(last_index_searched)(1) = value
 Else
@@ -99,7 +99,7 @@ End If
 End Function
 
 'Function to change dictionary key'
-Function change_dictionary_key(dictionary,old_key,new_key)
+Function change_dictionary_key(ByRef dictionary,ByVal old_key,ByVal new_key)
 If check_if_key_has_been_used(dictionary,old_key) Then
 Dim temp
 temp = last_index_searched
@@ -114,7 +114,7 @@ End If
 End Function
 
 'Function to remove a dictionary item from key'
-Function remove_dictionary_element_from_key(dictionary,key)
+Function remove_dictionary_element_from_key(ByRef dictionary,ByVal key)
 If check_if_key_has_been_used(dictionary,key) Then 
 Dim temp_array
 temp_array = Array()
@@ -135,7 +135,7 @@ dictionary = temp_array
 End Function
 
 'Function to remove a dictionary item from index'
-Function remove_dictionary_element_from_index(dictionary,idx)
+Function remove_dictionary_element_from_index(ByRef dictionary,ByVal idx)
 Dim temp 
 temp = UBound(dictionary)
 If idx >=0 and idx <= temp Then 
@@ -161,7 +161,7 @@ dictionary = temp_array
 End Function
 
 'Funtion to remove last element from the dictionary'
-Function remove_last_element_from_dictionary(dictionary)
+Function remove_last_element_from_dictionary(ByRef dictionary)
 Dim temp 
 temp = UBound(dictionary)
 If temp > 0 Then
@@ -173,7 +173,7 @@ End If
 End Function
 
 'Function to get key index from dictionary'
-Function get_key_index_from_dictionary(dictionary,key)
+Function get_key_index_from_dictionary(ByRef dictionary,ByVal key)
 If check_if_key_has_been_used(dictionary,key) Then
 get_key_index_from_dictionary = last_index_searched
 Else
@@ -182,7 +182,7 @@ End If
 End Function
 
 'Function to check if a value is in the dictionary'
-Function check_if_value_is_present(dictionary,value)
+Function check_if_value_is_present(ByRef dictionary,ByVal value)
 Dim temp
 temp_index = 0
 For Each temp In dictionary
@@ -197,7 +197,7 @@ check_if_value_is_present = false
 End Function
 
 'Function to get first index value'
-Function get_first_value_index_occurrence(dictionary,value)
+Function get_first_value_index_occurrence(ByRef dictionary,ByVal value)
 If check_if_value_is_present(dictionary,value) Then
 get_first_value_index_occurrence = last_index_searched
 Else
@@ -206,7 +206,7 @@ End If
 End Function
 
 'Function to retrieve all value indices'
-Function get_all_value_indices(dictionary,value)
+Function get_all_value_indices(ByRef dictionary,ByVal value)
 If check_if_value_is_present(dictionary,value) then
 Dim temp_array()
 Dim temp 
@@ -229,7 +229,7 @@ get_all_value_indices = temp_array
 End Function
 
 'Function to remove elements from an array of indices (pass an array with indices)'
-Function remove_dictionary_elements_from_indices(dictionary,indices)
+Function remove_dictionary_elements_from_indices(ByRef dictionary,ByVal indices)
 Dim dimension
 dimension = UBound(dictionary)
 Dim temp_array
@@ -255,7 +255,7 @@ dictionary = temp_array
 End Function
 
 'Function to remove all elements with that value (remove also one element if the value is unique)'
-Function remove_dictionary_elements_from_value(dictionary,value)
+Function remove_dictionary_elements_from_value(ByRef dictionary,ByVal value)
 Dim temp_array
 temp_array = Array()
 temp_array = get_all_value_indices(dictionary,value)
@@ -276,7 +276,7 @@ dictionary = temp_array
 End Function
 
 'Function to replace all value occurrences with new value'
-Function replace_all_value_occurrences(dictionary,old_value,new_value)
+Function replace_all_value_occurrences(ByRef dictionary,ByVal old_value,ByVal new_value)
 If check_if_value_is_present(dictionary,old_value) Then 
 Dim temp 
 Dim temp_index
@@ -293,7 +293,7 @@ End If
 End Function
 
 'Funtion to write the entire dictionary'
-Function write_dictionary(dictionary)
+Function write_dictionary(ByRef dictionary)
 Dim temp
 Dim temp_index
 temp_index = 0
