@@ -11,7 +11,7 @@
 ## `Dictionary.asp`'s avaible Functions
 
 - **Initialize an array as a dictionary** -> `get_initialized_dictionary()`
-- **Add an element into a dictionary** -> `add_element_to_dictionary_array(dictionary,key,value)`
+- **Add an element into a dictionary** -> `add_element_to_dictionary(dictionary,key,value)`
 - **Get value from key** -> `get_dictionary_value_from_key(dictionary,key)`
 - **Set value from key** -> `set_dictionary_value_from_key(dictionary,key,value)`
 - **Change a key into dictionary** -> `change_dictionary_key(dictionary,old_key,new_key)`
