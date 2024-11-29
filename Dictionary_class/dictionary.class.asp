@@ -4,7 +4,7 @@ Class dictionary
 
 Dim fixed_array()
 Dim last_index_searched
-Dim my_dictionary()
+Dim my_dictionary
 
 	' Initialization and destruction'
 	sub class_initialize()
@@ -13,6 +13,7 @@ Dim my_dictionary()
         fixed_array(1) = Null
         Dim temp_array(0)
         temp_array(0) = fixed_array
+		my_dictionary = Array()
         my_dictionary = temp_array
 	end sub
 	
@@ -45,8 +46,8 @@ Dim my_dictionary()
 	End Function
 
 	'Function to get dictionary dimension'
-	Function get_dictionary_dimension()
-  		get_dictionary_dimension = UBound(my_dictionary)
+	Function get_dimension()
+  		get_dimension = UBound(my_dictionary)
 	End Function
 
 	'Funtion to check if a key has been used'
@@ -100,6 +101,21 @@ Dim my_dictionary()
     		my_dictionary(last_index_searched)(1) = value
   		Else
     		Call Err.Raise(vbObjectError + 10, "dictionary.class - set_value_from_key", "The key "&key&" is not present")
+  		End If
+	End Function
+
+	'Function to change dictionary key'
+	Function change_key(ByVal old_key,ByVal new_key)
+  		If check_if_key_has_been_used(old_key) Then
+    		Dim temp
+    		temp = last_index_searched
+    			If Not check_if_key_has_been_used(new_key) Then 
+      				my_dictionary(temp)(0) = new_key
+    			Else
+      				Call Err.Raise(vbObjectError + 10, "dictionary.class - change_key", "The new key "&new_key&" is used")
+    			End If
+  		Else
+    		Call Err.Raise(vbObjectError + 10, "dictionary.class - change_key", "The old key "&old_key&" is not present")
   		End If
 	End Function
 
@@ -172,7 +188,7 @@ Dim my_dictionary()
 	End Function
 
 	'Function to check if a value is in the dictionary'
-	Function check_if_value_is_present(ByRef dictionary,ByVal value)
+	Function check_if_value_is_present(ByVal value)
   		Dim temp
   		temp_index = 0
   		For Each temp In my_dictionary
@@ -283,12 +299,12 @@ Dim my_dictionary()
 	End Function
 
 	'Funtion to write the entire dictionary'
-	Function write(ByRef dictionary)
+	Function write()
   		Dim temp
   		Dim temp_index
   		temp_index = 0
   		Response.Write("------Dictionary items------ <br><br>")
-  		For Each temp In dictionary
+  		For Each temp In my_dictionary
     		Response.Write("Index: " & temp_index & "<br>")
     		Response.Write("Key: " & temp(0) & "<br>")
     		Response.Write("Value: " & temp(1) & "<br>")
