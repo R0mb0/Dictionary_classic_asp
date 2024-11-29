@@ -1,6 +1,6 @@
-# Dictionary library in Classic ASP
+# Dictionaries library in Classic ASP
 
-## `Dictionary.asp`'s avaible Functions
+## `Dictionaries.asp`'s avaible Functions
 
 - **Initialize an array as a dictionary** -> `get_initialized_dictionary()`
 - **Add an element into a dictionary** -> `add_element_to_dictionary(dictionary,key,value)`
@@ -30,7 +30,7 @@
 
 1. Create array and initialize it as dictionary
    ```
-   <!--#include file="Dictionary.asp"-->
+   <!--#include file="Dictionaries.asp"-->
    <%
    Dim dictionary
    dictionary = Array()
