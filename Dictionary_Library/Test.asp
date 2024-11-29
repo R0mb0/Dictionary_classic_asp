@@ -1,5 +1,5 @@
 <%@LANGUAGE="VBSCRIPT"%>
-<!--#include file="Dictionary.asp"-->
+<!--#include file="Dictionaries.asp"-->
 <%
 Response.Write("--- Starting test --- <br>")
 
