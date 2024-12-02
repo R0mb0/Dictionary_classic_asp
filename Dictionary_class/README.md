@@ -6,7 +6,7 @@
 - **Get value from key** -> `get_value_from_key(key)`
 - **Set value from key** -> `set_value_from_key(key,value)`
 - **Change a key into dictionary** -> `change_key(old_key,new_key)`
-- **Remove dictionary element from key** -> `remove_element_from_index(idx)`
+- **Remove dictionary element from key** -> `remove_element_from_key(key)`
 - **Remove dictionary element from index** -> `remove_element_from_index(idx)`
 - **Remove last element from dictionary** -> `remove_last_element(dictionary)`
 - **Remove elements from dictionary using indices (pass to function an array with the indices)** -> `remove_elements_from_indices(indices)`
