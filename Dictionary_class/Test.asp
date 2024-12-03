@@ -36,6 +36,9 @@ dic.add_element "0023","Oggi voglio..."
 dic.add_element "0024","Nuovo blocchetto"
 dic.write()
 
+Response.Write("--- Check dictionary dimension --- <br>")
+Response.write("Dictionary dimension: " & dic.get_dimension() & "<br>")
+
 Response.Write("--- Check if the key 0010 has been used --- <br>")
 Response.Write("Has 0010 been used? " & dic.check_if_key_has_been_used("0010") & "<br>")
 
