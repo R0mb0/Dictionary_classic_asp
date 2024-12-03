@@ -34,6 +34,9 @@ add_element_to_dictionary_array "0023","Oggi voglio..."
 add_element_to_dictionary_array "0024","Nuovo blocchetto"
 write_dictionary()
 
+Response.Write("--- Check dictionary dimension --- <br>")
+Response.write("Dictionary dimension: " & get_dictionary_dimension() & "<br>")
+
 Response.Write("--- Check if the key 0010 has been used --- <br>")
 Response.Write("Has 0010 been used? " & check_if_key_has_been_used("0010") & "<br>")
 
