@@ -41,7 +41,7 @@ End Function
 
 'Function to get dictionary dimension'
 Function get_dictionary_dimension(ByRef dictionary)
-  get_dictionary_dimension = UBound(dictionary)
+  get_dictionary_dimension = UBound(dictionary) + 1
 End Function
 
 'Funtion to check if a key has been used'
