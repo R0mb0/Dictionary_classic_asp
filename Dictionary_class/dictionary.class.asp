@@ -47,7 +47,7 @@ Dim my_dictionary
 
 	'Function to get dictionary dimension'
 	Function get_dimension()
-  		get_dimension = UBound(my_dictionary)
+  		get_dimension = UBound(my_dictionary) + 1
 	End Function
 
 	'Funtion to check if a key has been used'
