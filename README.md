@@ -16,20 +16,7 @@ The first fixed array cell contains the unique key and the second one contains t
 
 #### Chart
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#BB2528',
-      'primaryTextColor': '#fff',
-      'primaryBorderColor': '#7C0000',
-      'lineColor': '#F8B229',
-      'secondaryColor': '#006100',
-      'tertiaryColor': '#fff'
-    }
-  }
-}%%
-graph TD;
+flowchart LR;
     A[/0/] ==> B[/1/]
     B ==> C[/2/]
     C ==> D[/.../]
