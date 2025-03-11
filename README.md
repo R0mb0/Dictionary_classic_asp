@@ -64,7 +64,7 @@ flowchart LR;
 > From `Test.asp`
 
 1. Create array and initialize it as dictionary
-   ```
+   ```asp
    <!--#include file="Dictionaries.asp"-->
    <%
    Dim dictionary
@@ -72,7 +72,7 @@ flowchart LR;
    dictionary = get_initialized_dictionary()
    ```
 2. Pass the dictionary to functions for manage
-   ```
+   ```asp
    add_element_to_dictionary_array "0001","Ice ice baby"
    add_element_to_dictionary_array "0002","Dove lo vuoi tu"
    add_element_to_dictionary_array "0003","Hot shot"
@@ -115,7 +115,7 @@ flowchart LR;
 > From `Test.asp`
 
 1. Create array and initialize it as dictionary
-   ```
+   ```asp
    <!--#include file="Dictionary.asp"-->
    <%
    Dim dictionary
@@ -123,7 +123,7 @@ flowchart LR;
    dictionary = get_initialized_dictionary()
    ```
 2. Pass the dictionary to functions for manage
-   ```
+   ```asp
    add_element_to_dictionary_array dictionary,"0001","Ice ice baby"
    add_element_to_dictionary_array dictionary,"0002","Dove lo vuoi tu"
    add_element_to_dictionary_array dictionary,"0003","Hot shot"
@@ -165,7 +165,7 @@ flowchart LR;
 > From `Test.asp`
 
 1. Initialize the class
-  ```
+  ```asp
   <%@LANGUAGE="VBSCRIPT"%>
   <!--#include file="dictionary.class.asp"-->
   <%
@@ -173,7 +173,7 @@ flowchart LR;
       Set dic = new dictionary
   ```
 2. Use the class
-  ```
+  ```asp
   dic.add_element "0001","Ice ice baby"
   dic.add_element "0002","Dove lo vuoi tu"
   dic.add_element "0003","Hot shot"
