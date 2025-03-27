@@ -1,204 +1,159 @@
-# Dictionary in Classic ASP
+# Dynamic array in Classic ASP
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/aadc6762a5a64808a2887afea2969e1d)](https://app.codacy.com/gh/R0mb0/Dictionary_classic_asp/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5fb4b710ca5c4dfd88a883944af2dac3)](https://app.codacy.com/gh/R0mb0/Dynamic_array_classic_asp/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/R0mb0/Dictionary_classic_asp)
-[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/R0mb0/Dictionary_classic_asp)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/R0mb0/Dynamic_array_classic_asp)
+[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/R0mb0/Dynamic_array_classic_asp)
 [![MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit)
 
 [![Donate](https://img.shields.io/badge/PayPal-Donate%20to%20Author-blue.svg)](http://paypal.me/R0mb0)
 
-## Backgroud structure
-
-### Arrays structure.
-The dictionary is implemented as a multidimensional array, where the first dynamic array contains on every cell a fixed array of two cells. 
-The first fixed array cell contains the unique key and the second one contains the value. 
-
-#### Chart
-```mermaid
-flowchart LR;
-    A[/0/] ==> B[/1/]
-    B ==> C[/2/]
-    C ==> D[/.../]
-    A --> E[0: Unique Key]
-    E --> F[1: Value]
-    B --> G[0: Unique Key]
-    G --> H[1: Value]
-    C --> I[0: Unique Key]
-    I --> J[1: Value]
-    D --> K[0: Unique Key]
-    K --> L[1: Value]
-```
 
 <details>
   <summary> 
 
- ## `Dictionary.asp`'s avaible Functions
+## `Dynamic_array.asp`'s avaible Functions
   
-  </summary>
+</summary>
 
-- **Initialize an array as a dictionary** -> `get_initialized_dictionary()`
-- **Add an element into a dictionary** -> `add_element_to_dictionary(key,value)`
-- **Get value from key** -> `get_dictionary_value_from_key(key)`
-- **Set value from key** -> `set_dictionary_value_from_key(key,value)`
-- **Change a key into dictionary** -> `change_dictionary_key(old_key,new_key)`
-- **Remove dictionary element from key** -> `remove_dictionary_element_from_index(idx)`
-- **Remove dictionary element from index** -> `remove_dictionary_element_from_index(idx)`
-- **Remove last element from dictionary** -> `remove_last_element_from_dictionary()`
-- **Remove elements from dictionary using indices (pass to function an array with the indices)** -> `remove_dictionary_elements_from_indices(indices)`
-- **Remove all elements with the same value from dictionary** -> `remove_dictionary_elements_from_value(value)`
-- **Replace all value occurrences with a new value in dictionary** -> `replace_all_value_occurrences(old_value,new_value)`
-- **Get key index from dictionary** -> `get_key_index_from_dictionary(key)`
-- **Reset a dictionary** -> `get_initialized_dictionary()`
-- **Get dictionary key from index** -> `get_dictionary_key_from_index(idx)`
-- **Get first value index occurrence** -> `get_first_value_index_occurrence(value)`
-- **Get all indices of a value** -> `get_all_value_indices(value)`
-- **Check if a key has been used into dictionary** -> `check_if_key_has_been_used(key)`
-- **Check if a value is present in the dictionary** -> `check_if_value_is_present(value)`
-- **Get dictionary value from index** -> `get_dictionary_value_from_index(idx)`
-- **Get dictionary dimension** -> `get_dictionary_dimension()`
-- **Write a dictionary** -> `write_dictionary()`
+- **Initialize the array** -> `initialize_array()`
+- **Check if the array is initializated** -> `is_array_initializated()`
+- **Add an element into the array** -> `add_element_to_array(element)`
+- **Get element from index** -> `get_element_from_array(idx)`
+- **Remove last element from array** -> `remove_last_element_from_array()`
+- **Remove an element from array** -> `remove_all_occurences_from_array(element)`
+- **Remove the first element occurence from array** -> `remove_first_occurence_from_array(element)`
+- **Remove element from index** -> `remove_this_elements_from_array(idx)`
+- **Remove elements from indices** -> `remove_these_elements_from_array(indices_array)`
+- **Reset the array** -> `initialize_array()`
+- **Check if an element is in the array** -> `array_contains(element)`
+- **Retrieve the first index of an element in the array** -> `from_array_get_first_index_occurence_of(element)`
+- **Retrieve all indeces of an element inside the array (return an array)** -> `from_array_get_all_indeces_occurence_of(element)`
+- **Retrieve the entire array** -> `get_array()`
+- **Retrieve the array dimension** -> `get_array_dimension()`
+- **Write the entire array** -> `write_array()`
 
-## How to use: 
+## How to use 
 
-> From `Test.asp`
+> From `Test1.asp`
 
-1. Create array and initialize it as dictionary
+1. Initialize the array and check it's status
    ```asp
-   <!--#include file="Dictionaries.asp"-->
+   <%@LANGUAGE="VBSCRIPT"%>
+   <!--#include file="Dynamic_array.asp"-->
    <%
-   Dim dictionary
-   dictionary = Array()
-   dictionary = get_initialized_dictionary()
+   initialize_array()
+   Response.Write("Array status: ")
+   Response.Write(is_array_initializated() & "<br>")
    ```
-2. Pass the dictionary to functions for manage
+2. Use the functions to manage the array
    ```asp
-   add_element_to_dictionary_array "0001","Ice ice baby"
-   add_element_to_dictionary_array "0002","Dove lo vuoi tu"
-   add_element_to_dictionary_array "0003","Hot shot"
-   write_dictionary
+   add_element_to_array("A")
+   add_element_to_array("B")
+   add_element_to_array("C")
+   add_element_to_array("D")
+   Response.Write("Elements inside: ")
+   write_array()
    %>
    ```
+
 </details>
 
 <details>
   <summary> 
 
- ## `Dictionaries.asp`'s avaible Functions
+## `Dynamic_arrays.asp`'s avaible Functions
   
-  </summary>
+</summary>
 
-- **Initialize an array as a dictionary** -> `get_initialized_dictionary()`
-- **Add an element into a dictionary** -> `add_element_to_dictionary(dictionary,key,value)`
-- **Get value from key** -> `get_dictionary_value_from_key(dictionary,key)`
-- **Set value from key** -> `set_dictionary_value_from_key(dictionary,key,value)`
-- **Change a key into dictionary** -> `change_dictionary_key(dictionary,old_key,new_key)`
-- **Remove dictionary element from key** -> `remove_dictionary_element_from_index(dictionary,idx)`
-- **Remove dictionary element from index** -> `remove_dictionary_element_from_index(dictionary,idx)`
-- **Remove last element from dictionary** -> `remove_last_element_from_dictionary(dictionary)`
-- **Remove elements from dictionary using indices (pass to function an array with the indices)** -> `remove_dictionary_elements_from_indices(dictionary,indices)`
-- **Remove all elements with the same value from dictionary** -> `remove_dictionary_elements_from_value(dictionary,value)`
-- **Replace all value occurrences with a new value in dictionary** -> `replace_all_value_occurrences(dictionary,old_value,new_value)`
-- **Get key index from dictionary** -> `get_key_index_from_dictionary(dictionary,key)`
-- **Reset a dictionary** -> `get_initialized_dictionary()`
-- **Get dictionary key from index** -> `get_dictionary_key_from_index(dictionary,idx)`
-- **Get first value index occurrence** -> `get_first_value_index_occurrence(dictionary,value)`
-- **Get all indices of a value** -> `get_all_value_indices(dictionary,value)`
-- **Check if a key has been used into dictionary** -> `check_if_key_has_been_used(dictionary,key)`
-- **Check if a value is present in the dictionary** -> `check_if_value_is_present(dictionary,value)`
-- **Get dictionary value from index** -> `get_dictionary_value_from_index(dictionary,idx)`
-- **Get dictionary dimension** -> `get_dictionary_dimension(dictionary)`
-- **Write a dictionary** -> `write_dictionary(dictionary)`
+- **Initialize a dynamic array** -> `get_initializated_dynamic_array()`
+- **Add an element into a dynamic array** -> `add_element_to_dynamic_array(my_array,element)`
+- **Get element from index** -> `get_element_from_dynamic_array(my_array,idx)`
+- **Remove last element from a dynamic array** -> `remove_last_element_from_dynamic_array(my_array)`
+- **Remove all element occurences from a dyamic array** -> `remove_all_occurences_from_dynamic_array(my_array,element)`
+- **Remove first element occurence from a dynamic array** -> `remove_first_occurence_from_dynamic_array(my_array,element)`
+- **Remove element from index** -> `remove_this_elements_from_dynamic_array(my_array,idx)`
+- **Remove elements from indices** -> `remove_these_elements_from_dynamic_array(my_array,indices_array)`
+- **Reset a dynamic array** -> `get_initializated_dynamic_array()`
+- **Check if an element is in the dynamic array** -> `dynamic_array_contains(my_array,element)`
+- **Retrieve the first index of an element inside a dynamic array** -> `from_dynamic_array_get_first_index_occurence_of(my_array,element)`
+- **Retrieve all indeces of an element inside the dynamic array (return an array)** -> `from_dynamic_array_get_all_indeces_occurence_of(my_array,element)`
+- **Retrieve the dynamic array dimension** -> `get_dynamic_array_dimension(my_array)`
+- **Write an entire dynamic array** -> `write_dynamic_array(my_array)`
 
-## How to use: 
+## How to use 
 
 > From `Test.asp`
 
-1. Create array and initialize it as dictionary
+1. Create array and initialize it
    ```asp
-   <!--#include file="Dictionary.asp"-->
+   <%@LANGUAGE="VBSCRIPT"%>
+   <!--#include file="Dynamic_arrays.asp"-->
    <%
-   Dim dictionary
-   dictionary = Array()
-   dictionary = get_initialized_dictionary()
+   Dim test_array
+   test_array = Array()
+   test_array = get_initializated_dynamic_array()
    ```
-2. Pass the dictionary to functions for manage
+2. Pass the array to functions for manage
    ```asp
-   add_element_to_dictionary_array dictionary,"0001","Ice ice baby"
-   add_element_to_dictionary_array dictionary,"0002","Dove lo vuoi tu"
-   add_element_to_dictionary_array dictionary,"0003","Hot shot"
-   write_dictionary dictionary
+   add_element_to_dynamic_array test_array,"A"
+   add_element_to_dynamic_array test_array,"B"
+   add_element_to_dynamic_array test_array,"C"
+   write_dynamic_array(test_array)
    %>
    ```
-   </details>
+
+</details>
 
 <details>
   <summary> 
 
-## `dictionary.class.asp`'s avaible Functions
+## `dArray.class.asp`'s avaible Functions
   
-  </summary>
+</summary>
 
-- **Add an element into a dictionary** -> `add_element(key,value)`
-- **Get value from key** -> `get_value_from_key(key)`
-- **Set value from key** -> `set_value_from_key(key,value)`
-- **Change a key into dictionary** -> `change_key(old_key,new_key)`
-- **Remove dictionary element from key** -> `remove_element_from_index(idx)`
-- **Remove dictionary element from index** -> `remove_element_from_index(idx)`
-- **Remove last element from dictionary** -> `remove_last_element(dictionary)`
-- **Remove elements from dictionary using indices (pass to function an array with the indices)** -> `remove_elements_from_indices(indices)`
-- **Remove all elements with the same value from dictionary** -> `remove_elements_from_value(value)`
-- **Replace all value occurrences with a new value in dictionary** -> `replace_all_value_occurrences(old_value,new_value)`
-- **Get key index from dictionary** -> `get_key_index(key)`
-- **Reset a dictionary** -> Re-initialize the object
-- **Get dictionary key from index** -> `get_key_from_index(idx)`
-- **Get first value index occurrence** -> `get_first_value_index_occurrence(value)`
-- **Get all indices of a value** -> `get_all_value_indices(value)`
-- **Check if a key has been used into dictionary** -> `check_if_key_has_been_used(key)`
-- **Check if a value is present in the dictionary** -> `check_if_value_is_present(value)`
-- **Get dictionary value from index** -> `get_value_from_index(idx)`
-- **Get dictionary dimension** -> `get_dimension()`
-- **Write a dictionary** -> `write()`
+- **Initialize class** -> `sub class_initialize()`
+- **Terminate class** -> `sub class_terminate()`
+- **Add an element** -> `Public Function add_element(element)`
+- **Get element from index** -> `Public Function get_element(idx)`
+- **Get array dimension** -> `Public Function get_dimension()`
+- **Remove last element** -> `Public Function remove_last_element()`
+- **Remove all element occurences** -> `Public Function remove_all_occurences(element)`
+- **Remove first element occurence** -> `Public Function remove_first_occurence(element)`
+- **Remove element from index** -> `Public Function remove_this_element(idx)`
+- **Remove elements from indices** -> `Public Function remove_these_elements(indices_array)`
+- **Reset** -> Re-initialize the class
+- **Check if an element is present** -> `Public Function contains(element)`
+- **Retrieve the first index of an element** -> `Public Function get_first_index_occurence_of(element)`
+- **Retrieve all indeces of an element (return an array)** -> `Public Function get_all_indeces_occurence_of(element)`
+- **Write the entire array** -> `Public Function write_array()`
 
-## How to use: 
+## How to use 
 
 > From `Test.asp`
 
 1. Initialize the class
   ```asp
   <%@LANGUAGE="VBSCRIPT"%>
-  <!--#include file="dictionary.class.asp"-->
+  <!--#include file="dArray.class.asp"-->
   <%
-      Dim dic
-      Set dic = new dictionary
+      Dim da 
+      Set da = new dArray
   ```
 2. Use the class
   ```asp
-  dic.add_element "0001","Ice ice baby"
-  dic.add_element "0002","Dove lo vuoi tu"
-  dic.add_element "0003","Hot shot"
-  dic.add_element "0004","7 minuti in paradiso"
-  dic.add_element "0005","Dimmi dove e quando"
-  dic.add_element "0006","Balla per me"
-  dic.add_element "0007","Nudi e crudi"
-  dic.add_element "0008","Obbligo o verita'"
-  dic.add_element "0009","Sotto il vestito, niente"
-  dic.add_element "0010","Colazione a letto "
-  dic.add_element "0011","Luce dei miei occhi"
-  dic.add_element "0012","Comprami un giocattolo"
-  dic.add_element "0013","Facciamo pace"
-  dic.add_element "0014","Less is more"
-  dic.add_element "0015","call me baby"
-  dic.add_element "0016","Pensaci tu"
-  dic.add_element "0017","Souvenir d'amour"
-  dic.add_element "0018","Proca a prendermi"
-  dic.add_element "0019","Meet me at the hotel"
-  dic.add_element "0020","Sexy movie night"
-  dic.add_element "0021","Doccia bollente"
-  dic.add_element "0022","Blind date"
-  dic.add_element "0023","Oggi voglio..."
-  dic.add_element "0024","Nuovo blocchetto"
-  dic.write()
+  da.add_element("A")
+  da.add_element("B")
+  da.add_element("C")
+  da.add_element("D")
+  da.add_element("A")
+  da.add_element("B")
+  da.add_element("C")
+  da.add_element("D")
+  da.add_element("A")
+  Response.Write("Elements inside: ")
+  da.write_array()
   %>
   ```
+
 </details>
